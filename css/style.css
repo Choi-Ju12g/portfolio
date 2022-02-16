@@ -1,0 +1,102 @@
+:root{
+    --text-color: black;
+}
+
+body {
+    margin: 0;
+    font-family: 'Akaya Telivigala', cursive;
+    background-color: beige;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+    padding: 8px 12px;
+}
+
+.navBar__home{
+    font-size: 24px;
+    color:var(--text-color);
+}
+
+.navBar__home a{
+    color: var(--text-color);
+}
+
+.navBar__home i {
+    color:#fff27f;
+}
+
+.navBar__menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.navBar__menu li{
+    padding: 8px 12px;
+    font-size: 20px;
+}
+
+.navBar__menu li:hover{
+    background-color: #d49466;
+    border-radius: 4px;
+}
+
+.navBar__contact{
+    list-style: none;
+    color: var(--text-color);
+    display: flex;
+    padding-left: 0;
+}
+
+.navBar__contact li {
+    padding: 8px 12px;
+}
+
+.navBar__toggle{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+}
+@media screen and (max-width: 768px){
+    .navBar{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navBar__menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navBar__menu li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navBar__contact{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navBar__toggle{
+        display: block;
+    }
+
+    .navBar__menu.active,
+    .navBar__contact.active{
+        display: flex;
+    }
+}
