@@ -1,8 +1,12 @@
+import Home from "./components/home.js";
+import Skills from "./components/skills.js";
+import AboutMe from "./components/aboutme.js";
+
 const router = async () => {
     const routes = [
-    {path:'/index.html', view: () => console.log("home")},
-    {path:'/AboutMe', view:() => console.log("aboutme")},       
-    {path:'/Skills', view :() => console.log("skills")},
+    {path:'/index.html', view: Home},
+    {path:'/AboutMe', view: AboutMe},       
+    {path:'/Skills', view :Skills},
     {path:'/Projects', vie:() => console.log("projects")},
     {path:'/RoadMap', view:() => console.log("roadmap")},       
     {path:'/History', view:() => console.log("history")},        
@@ -37,3 +41,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     router();
 });
+
+window.addEventListener("popstate",router);
