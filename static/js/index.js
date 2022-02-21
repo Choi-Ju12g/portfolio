@@ -1,15 +1,19 @@
 import Home from "./components/home.js";
 import Skills from "./components/skills.js";
 import AboutMe from "./components/aboutme.js";
+import NotFound from "./components/NotFound.js";
+import Projects from "./components/projects.js"
+import RoadMap from "./components/roadmap.js";
+import History from "./components/history.js"
 
 const router = async () => {
     const routes = [
     {path:'/index.html', view: Home},
-    {path:'/AboutMe', view: AboutMe},       
-    {path:'/Skills', view :Skills},
-    {path:'/Projects', vie:() => console.log("projects")},
-    {path:'/RoadMap', view:() => console.log("roadmap")},       
-    {path:'/History', view:() => console.log("history")},        
+    {path:'/aboutme', view: AboutMe},       
+    {path:'/skills', view :Skills},
+    {path:'/projects', view: Projects},
+    {path:'/roadmap', view:RoadMap},       
+    {path:'/history', view:History},        
     ];
 
     const pageMatches = routes.map((route) => {
@@ -21,8 +25,19 @@ const router = async () => {
     
       
     let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
-    console.log(pageMatches);
-    console.log(match.route.view());
+    // console.log(pageMatches);
+    // console.log(match.route.view());
+    if(!match){
+        match = {
+            route: location.pathname,
+            isMatch: true,
+        };
+        const page = new NotFound();
+        document.querySelector("#root").innerHTML = await page.getHtml();
+    }else{
+        const page = new match.route.view();
+        document.querySelector("#root").innerHTML = await page.getHtml();
+    }
 }
 
 
@@ -30,6 +45,7 @@ const router = async () => {
 window.addEventListener("popstate", () => {
     router();
 });
+//window.addEventListener("popstate",router);
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", (e) => {
@@ -41,5 +57,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     router();
 });
-
-window.addEventListener("popstate",router);
