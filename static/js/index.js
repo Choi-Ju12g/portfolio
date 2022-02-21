@@ -8,7 +8,7 @@ import History from "./components/history.js"
 
 const router = async () => {
     const routes = [
-    {path:'/index.html', view: Home},
+    {path:'/', view: Home},
     {path:'/aboutme', view: AboutMe},       
     {path:'/skills', view :Skills},
     {path:'/projects', view: Projects},
