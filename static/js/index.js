@@ -1,10 +1,10 @@
-import Home from "./components/home.js";
-import Skills from "./components/skills.js";
-import AboutMe from "./components/aboutme.js";
-import NotFound from "./components/NotFound.js";
-import Projects from "./components/projects.js"
-import RoadMap from "./components/roadmap.js";
-import History from "./components/history.js";
+import Home from "./views/home.js";
+import Skills from "./views/skills.js";
+import AboutMe from "./views/aboutme.js";
+import NotFound from "./views/NotFound.js";
+import Projects from "./views/projects.js"
+import RoadMap from "./views/roadmap.js";
+import History from "./views/history.js";
 import { u } from "./lib.js";
 
 const pathToRegex = path =>
@@ -56,17 +56,29 @@ const router = async () => {
     let match = pageMatches.find((pageMatch) => pageMatch.isMatch !== null);
     // console.log(pageMatches);
     // console.log(match.route.view());
-    if(!match){
+    // if(!match){
+    //     match = {
+    //         route: location.pathname,
+    //         isMatch: true,
+    //     };
+    //     const page = new NotFound();
+    //     document.querySelector("#root").innerHTML = await page.getHtml();
+    // }else{
+    //     const page = new match.route.view();
+    //     document.querySelector("#root").innerHTML = await page.getHtml();
+    // }
+    if (!match) {
         match = {
-            route: location.pathname,
-            isMatch: true,
+          route: routes[0],
+          isMatch: [
+            location.pathname
+          ]
         };
-        const page = new NotFound();
-        document.querySelector("#root").innerHTML = await page.getHtml();
-    }else{
-        const page = new match.route.view();
-        document.querySelector("#root").innerHTML = await page.getHtml();
-    }
+      }
+    
+      const view = new match.route.view(getParams(match));
+    
+      document.querySelector('#root').innerHTML = await view.getHtml();
 }
 
 
