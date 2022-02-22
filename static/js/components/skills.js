@@ -1,10 +1,15 @@
-export default class {
-    constructor() {
-        document.title = "Skills";
+import AbstractView from './AbstractView.js';
+import { u } from "../lib.js";
+
+export default class extends AbstractView {
+    constructor(params) {
+        super(params)
+        this.setTitle('Skills');
     }
+    
     async getHtml() {
         return `
-            <h1>This is Skills</h1>
+            <h1>This is Skills Page</h1>
         `;
     }
 }
