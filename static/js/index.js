@@ -1,7 +1,6 @@
 import Home from "./views/home.js";
 import Skills from "./views/skills.js";
 import AboutMe from "./views/aboutme.js";
-import NotFound from "./views/NotFound.js";
 import Projects from "./views/projects.js"
 import RoadMap from "./views/roadmap.js";
 import History from "./views/history.js";
@@ -48,12 +47,12 @@ const router = async () => {
         return {
           route: route,
           //isMatch: location.pathname === route.path,
-          isMatch: location.pathname.match(pathToRegex(route.path))
+          result: location.pathname.match(pathToRegex(route.path))
         };
       });  
     
       
-    let match = pageMatches.find((pageMatch) => pageMatch.isMatch !== null);
+    let match = pageMatches.find((pageMatch) => pageMatch.result !== null);
     // console.log(pageMatches);
     // console.log(match.route.view());
     // if(!match){
@@ -70,14 +69,14 @@ const router = async () => {
     if (!match) {
         match = {
           route: routes[0],
-          isMatch: [
+          result: [
             location.pathname
           ]
         };
       }
     
       const view = new match.route.view(getParams(match));
-    
+      console.log(view);
       document.querySelector('#root').innerHTML = await view.getHtml();
 }
 
