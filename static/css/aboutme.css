@@ -1,0 +1,10 @@
+#aboutme_wrap{
+    display: flex;
+    flex-direction: column;
+}
+
+#profile{
+    
+    margin-top: 20px;
+    margin-left: 20px;
+}

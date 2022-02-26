@@ -1,6 +1,6 @@
 import AbstractView from './AbstractView.js';
 import { u } from "../lib.js";
-import porfile from "../img/porfile.jpg"
+
 
 export default class extends AbstractView {
     constructor(params) {
@@ -10,8 +10,8 @@ export default class extends AbstractView {
     
     async getHtml() {
         return `
-            <img src="./img/profile.jpg" alt="My profile" width="200" height="200">
-            <h1>This is About_Me Page</h1>
+            <img src="/static/img/profile.jpg" alt="My profile" width="150" height="150">
+            <h2>누구나 할 수 있지만 아무나 못하는 일을 할 개발자, 최정우 입니다.</h2>
         `;
     }
 }
